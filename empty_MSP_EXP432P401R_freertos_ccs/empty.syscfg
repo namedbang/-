@@ -1,0 +1,162 @@
+/**
+ * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
+ * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
+ * @cliArgs --board "/ti/boards/MSP_EXP432P401R" --product "simplelink_msp432p4_sdk@3.40.01.02"
+ * @versions {"tool":"1.17.0+3128"}
+ */
+
+/**
+ * Import the modules used in this configuration.
+ */
+const Display  = scripting.addModule("/ti/display/Display", {}, false);
+const Display1 = Display.addInstance();
+const ADC      = scripting.addModule("/ti/drivers/ADC", {}, false);
+const ADC1     = ADC.addInstance();
+const Capture  = scripting.addModule("/ti/drivers/Capture", {}, false);
+const Capture1 = Capture.addInstance();
+const Capture2 = Capture.addInstance();
+const DMA      = scripting.addModule("/ti/drivers/DMA");
+const GPIO     = scripting.addModule("/ti/drivers/GPIO");
+const GPIO1    = GPIO.addInstance();
+const GPIO2    = GPIO.addInstance();
+const GPIO3    = GPIO.addInstance();
+const GPIO4    = GPIO.addInstance();
+const GPIO5    = GPIO.addInstance();
+const GPIO6    = GPIO.addInstance();
+const GPIO7    = GPIO.addInstance();
+const GPIO8    = GPIO.addInstance();
+const GPIO9    = GPIO.addInstance();
+const GPIO10   = GPIO.addInstance();
+const GPIO11   = GPIO.addInstance();
+const GPIO14   = GPIO.addInstance();
+const GPIO15   = GPIO.addInstance();
+const PWM      = scripting.addModule("/ti/drivers/PWM", {}, false);
+const PWM1     = PWM.addInstance();
+const PWM2     = PWM.addInstance();
+const RTOS     = scripting.addModule("/ti/drivers/RTOS");
+const Timer    = scripting.addModule("/ti/drivers/Timer", {}, false);
+const Timer1   = Timer.addInstance();
+const UART     = scripting.addModule("/ti/drivers/UART", {}, false);
+const UART1    = UART.addInstance();
+const Button   = scripting.addModule("/ti/drivers/apps/Button", {}, false);
+const Button1  = Button.addInstance();
+const Button2  = Button.addInstance();
+
+/**
+ * Write custom configuration values to the imported modules.
+ */
+Display1.$name      = "CONFIG_Display_0";
+Display1.$hardware  = system.deviceData.board.components.XDS110UART;
+Display1.uart.$name = "CONFIG_UART_1";
+
+ADC1.$name              = "CONFIG_ADC_0";
+ADC1.resolution         = "12 Bits";
+ADC1.adc.adcPin.$assign = "boosterpack.12";
+
+Capture1.$name                    = "CONFIG_CAPTURE_1";
+Capture1.timer.capturePin.$assign = "boosterpack.32";
+
+Capture2.$name                    = "CONFIG_CAPTURE_2";
+Capture2.timer.capturePin.$assign = "boosterpack.17";
+
+GPIO1.$hardware = system.deviceData.board.components.LED1_RED;
+GPIO1.$name     = "CONFIG_GPIO_LED_0";
+
+GPIO2.$name           = "AIN1";
+GPIO2.mode            = "Output";
+GPIO2.gpioPin.$assign = "boosterpack.24";
+
+GPIO3.$name           = "AIN2";
+GPIO3.mode            = "Output";
+GPIO3.gpioPin.$assign = "boosterpack.5";
+
+GPIO4.$name           = "BIN1";
+GPIO4.mode            = "Output";
+GPIO4.gpioPin.$assign = "boosterpack.25";
+
+GPIO5.$name           = "BIN2";
+GPIO5.mode            = "Output";
+GPIO5.gpioPin.$assign = "boosterpack.6";
+
+GPIO6.$name           = "STBY";
+GPIO6.mode            = "Output";
+GPIO6.gpioPin.$assign = "boosterpack.26";
+
+GPIO7.$name           = "mpu6050_sda";
+GPIO7.mode            = "Output";
+GPIO7.pull            = "Pull Up";
+GPIO7.gpioPin.$assign = "boosterpack.15";
+
+GPIO8.$name           = "mpu6050_scl";
+GPIO8.mode            = "Output";
+GPIO8.outputType      = "Open Drain";
+GPIO8.gpioPin.$assign = "boosterpack.14";
+
+GPIO9.$name     = "CONFIG_GPIO_7";
+GPIO9.$hardware = system.deviceData.board.components.LED2_GREEN;
+
+GPIO10.$name     = "CONFIG_GPIO_8";
+GPIO10.$hardware = system.deviceData.board.components.LED2_BLUE;
+
+GPIO11.$name     = "CONFIG_GPIO_0";
+GPIO11.$hardware = system.deviceData.board.components.LED2_RED;
+
+GPIO14.$name           = "CCD_clk";
+GPIO14.gpioPin.$assign = "boosterpack.13";
+
+GPIO15.$name           = "CCD_SI";
+GPIO15.gpioPin.$assign = "boosterpack.11";
+
+PWM1.$name                = "CONFIG_PWM_B";
+PWM1.timer.pwmPin.$assign = "boosterpack.39";
+
+PWM2.$name                = "CONFIG_PWM_A";
+PWM2.timer.pwmPin.$assign = "boosterpack.34";
+
+const Power                   = scripting.addModule("/ti/drivers/Power", {}, false);
+Power.performanceLevel3.$name = "ti_drivers_power_PowerMSP432PerfLevels0";
+Power.performanceLevel2.$name = "ti_drivers_power_PowerMSP432PerfLevels1";
+Power.performanceLevel1.$name = "ti_drivers_power_PowerMSP432PerfLevels2";
+Power.performanceLevel0.$name = "ti_drivers_power_PowerMSP432PerfLevels3";
+
+RTOS.name = "FreeRTOS";
+
+Timer1.$name         = "CONFIG_TIMER_1";
+Timer1.clockSource   = "SMCLK";
+Timer1.timerType     = "32 Bits";
+Timer1.timer.$assign = "TIMER32_0";
+
+UART1.$name                 = "CONFIG_UART_0";
+UART1.errorCallbackFunction = "UART_RxCpltCallback";
+UART1.baudRates             = [9600,115200];
+UART1.uart.txPin.$assign    = "boosterpack.38";
+
+Button1.$name         = "CONFIG_BUTTON_0";
+Button1.$hardware     = system.deviceData.board.components.S2;
+Button1.gpioPin.$name = "CONFIG_GPIO_4";
+
+Button2.$name         = "CONFIG_BUTTON_1";
+Button2.$hardware     = system.deviceData.board.components.S1;
+Button2.gpioPin.$name = "CONFIG_GPIO_5";
+
+/**
+ * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
+ * version of the tool will not impact the pinmux you originally saw.  These lines can be completely deleted in order to
+ * re-solve from scratch.
+ */
+Display1.uart.uart.$suggestSolution       = "EUSCI_A0";
+Display1.uart.uart.txPin.$suggestSolution = "P1.3.GPIO/EUSCI_A0_UART.TXD/EUSCI_A0_SPI.SIMO";
+Display1.uart.uart.rxPin.$suggestSolution = "P1.2.GPIO/EUSCI_A0_UART.RXD/EUSCI_A0_SPI.SOMI";
+ADC1.adc.$suggestSolution                 = "ADC14";
+Capture1.timer.$suggestSolution           = "Timer_A1";
+Capture2.timer.$suggestSolution           = "Timer_A2";
+GPIO1.gpioPin.$suggestSolution            = "P1.0.GPIO/EUSCI_A0_SPI.STE";
+GPIO9.gpioPin.$suggestSolution            = "P2.1.GPIO/EUSCI_A1_SPI.CLK";
+GPIO10.gpioPin.$suggestSolution           = "P2.2.GPIO/EUSCI_A1_UART.RXD/EUSCI_A1_SPI.SOMI";
+GPIO11.gpioPin.$suggestSolution           = "P2.0.GPIO/EUSCI_A1_SPI.STE";
+PWM1.timer.$suggestSolution               = "Timer_A0";
+PWM2.timer.$suggestSolution               = "Timer_A0";
+UART1.uart.$suggestSolution               = "EUSCI_A1";
+UART1.uart.rxPin.$suggestSolution         = "boosterpack.19";
+Button1.gpioPin.gpioPin.$suggestSolution  = "P1.4.GPIO/EUSCI_B0_SPI.STE";
+Button2.gpioPin.gpioPin.$suggestSolution  = "P1.1.GPIO/EUSCI_A0_SPI.CLK";
